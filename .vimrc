@@ -1,7 +1,10 @@
 
 set number
 set expandtab
-set tabstop=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
 set hlsearch
 set incsearch
 syntax on
@@ -44,12 +47,13 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 " --- Python ---
-Plug 'klen/python-mode'               " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
+"Plug 'klen/python-mode'               " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
 Plug 'davidhalter/jedi-vim'           " Jedi-vim autocomplete plugin
 Plug 'mitsuhiko/vim-jinja'            " Jinja support for vim
 Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Plug 'chrisbra/Colorizer'
 Plug 'etdev/vim-hexcolor'
+Plug 'fidian/hexmode'
 call plug#end()
 
 colorscheme codedark
