@@ -1,12 +1,17 @@
 set $mod Mod4
 exec compton
+exec nm-applet
 exec setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle,grp_led:scroll"
-exec --no-startup-id feh --bg-fill /home/timickb/background.png
+exec --no-startup-id feh --bg-fill /home/timickb/background.jpg
 exec pulseaudio --start
 exec pulseaudio -k
 exec xrandr --dpi 100
 exec start-pulseaudio-x11
+exec sh $HOME/.config/i3/correct.sh
+exec xinput set-prop 11 306 -76, -76
+exec xinput set-prop 11 313 0, 0, 0, 0, 1, 2, 3
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -15,7 +20,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-#font pango:Nimbus Roman No9 L 10
+font pango:DejaVu Sans Mono 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -85,7 +90,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-bindsym $mod+l exec bash ~/.i3/i3lock.sh
+bindsym $mod+l exec i3lock --color "#223344"
 
 
 # switch to workspace
@@ -105,7 +110,7 @@ bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5 
+bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
@@ -120,6 +125,9 @@ bindsym $mod+c exec amixer set Master 5%-
 bindsym $mod+n exec amixer set Master 5%+
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer set Master mute
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 
 bindsym F10 exec amixer set Master 5%-
 bindsym F11 exec amixer set Master 5%+
@@ -130,10 +138,6 @@ bindsym Ctrl+F11 exec amixer set Headphone 5%+
 bindsym End exec mocp -f
 bindsym Home exec mocp -G
 bindsym Page_Down exec mocp -r
-
-assign [class="Google-chrome"] 1
-assign [class="TelegramDesktop"] 2
-assign [class="xfce4-terminal"] 3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -166,14 +170,14 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-#bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize"
 
 new_window pixel 2
 
 # THEMES
 
 #GREY TURQUIOSE DMENU THEME
-bindsym $mod+d exec dmenu_run -i -nb '#252525' -nf '#0088dd' -sb '#0088dd' -sf '#252525'
+bindsym $mod+d exec dmenu_run -i -nb '#252525' -nf '#008811' -sb '#008811' -sf '#252525'
 
 
 #WINDOWS THEME
@@ -185,36 +189,36 @@ client.unfocused           #444444 #444444 #888888 #161616
 gaps inner 0
 gaps outer 0
 
-bar {
-    height 30
-    strip_workspace_numbers yes
-    font pango:FontAwesome, 12
-    position top
-    tray_output primary
-    i3bar_command i3bar -t
-    status_command i3blocks -c /home/timickb/.config/i3/i3blocks.conf
-    colors {
-    
-    #ORANGE BAR THEME TEST
-    statusline #d15005
-    background #000000FF
-    #border  backgr. text 
-    focused_workspace  #000000 #000000 #ff851a
-    active_workspace   #000000 #000000 #ff851a
-    inactive_workspace #000000 #000000 #d15005
-    urgent_workspace   #000000 #000000 #ff851a
-
-    #BAR THEME
-    background #181818
-    statusline #f0f0f0
-    focused_workspace  #444444 #444444 #f0f0f0
-    active_workspace   #161616 #161616 #f0f0f0
-    inactive_workspace #161616 #161616 #f0f0f0
-    urgent_workspace   #161616 #161616 #f0f0f0
-
-    
-       } 
-
-}
-
-
+#bar {
+#    height 35
+#    strip_workspace_numbers yes
+#    font pango:FontAwesome, 14
+#    position top
+#    tray_output primary
+#    i3bar_command i3bar -t
+#    status_command i3blocks -c /home/timickb/.config/i3/i3blocks.conf
+#    colors {
+#    
+#    #ORANGE BAR THEME TEST
+#    statusline #d15005
+#    background #000000FF
+#    #border  backgr. text 
+#    focused_workspace  #000000 #000000 #ff851a
+#    active_workspace   #000000 #000000 #ff851a
+#    inactive_workspace #000000 #000000 #d15005
+#    urgent_workspace   #000000 #000000 #ff851a
+#
+#    #BAR THEME
+#    background #181818
+#    statusline #f0f0f0
+#    focused_workspace  #444444 #444444 #f0f0f0
+#    active_workspace   #161616 #161616 #f0f0f0
+#    inactive_workspace #161616 #161616 #f0f0f0
+#    urgent_workspace   #161616 #161616 #f0f0f0
+#
+#    
+#       } 
+#
+#}
+#
+#
