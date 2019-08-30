@@ -131,9 +131,6 @@ bindsym End exec mocp -f
 bindsym Home exec mocp -G
 bindsym Page_Down exec mocp -r
 
-assign [class="Google-chrome"] 1
-assign [class="TelegramDesktop"] 2
-assign [class="xfce4-terminal"] 3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -166,7 +163,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-#bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize"
 
 new_window pixel 2
 
