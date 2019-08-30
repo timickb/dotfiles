@@ -11,7 +11,7 @@ status = check_output(['acpi'], universal_newlines=True)
 
 if not status:
     # stands for no battery found
-    fulltext = "<span color='red'><span font='FontAwesome'>\uf00d \uf240</span></span>"
+    fulltext = "\uf00d \uf240"
     percentleft = 100
 else:
     # if there is more than one battery in one laptop, the percentage left is 
@@ -31,10 +31,10 @@ else:
     commasplitstatus = commasplitstatus_batteries[0]
     percentleft = int(sum(percentleft_batteries)/len(percentleft_batteries))
     # stands for charging
-    FA_LIGHTNING = "<span color='yellow'><span font='FontAwesome'>\uf0e7</span></span>"
+    FA_LIGHTNING = "\uf0e7"
 
     # stands for plugged in
-    FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
+    FA_PLUG = "\uf1e6"
 
     fulltext = ""
     timeleft = ""
@@ -42,39 +42,15 @@ else:
     if state == "Discharging":
         time = commasplitstatus[-1].split()[0]
         time = ":".join(time.split(":")[0:2])
-        timeleft = " ({})".format(time)
     elif state == "Full":
         fulltext = FA_PLUG + " "
     elif state == "Unknown":
-        fulltext = "<span font='FontAwesome'>\uf128</span> "
+        fulltext = "\uf128"
     else:
         fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
 
-    def color(percent):
-        if percent < 10:
-            # exit code 33 will turn background red
-            return "#FFFFFF"
-        if percent < 20:
-            return "#FF3300"
-        if percent < 30:
-            return "#FF6600"
-        if percent < 40:
-            return "#FF9900"
-        if percent < 50:
-            return "#FFCC00"
-        if percent < 60:
-            return "#FFFF00"
-        if percent < 70:
-            return "#FFFF33"
-        if percent < 80:
-            return "#FFFF66"
-        return "#FFFFFF"
-
-    form =  '<span color="{}">{}%</span>'
-    fulltext += form.format(color(percentleft), percentleft)
+    form =  '{}%'
+    fulltext += form.format(percentleft)
     fulltext += timeleft
 
 print(fulltext)
-print(fulltext)
-if percentleft < 10:
-    exit(33)
