@@ -33,10 +33,19 @@
   font: "Roboto Mono 20";
 }
 
+element-icon {
+    bottom: 20px;
+    border-radius: 14px;
+    size: 3ch;
+}
+
 window {
-  transparency: "real";
+  transparency: 0.8;
   /*fullscreen: true;*/
-  background-color: #00000088; /*base00 + CC (80% opacity)*/
+  background-color: #000000BF; /*base00 + CC (80% opacity)*/
+  border-radius: 7px;
+  border: none;
+  height: 800px;
 }
 
 mainbox {
@@ -45,12 +54,11 @@ mainbox {
   /*margin: 20%;*/
   padding: 30px 0;
   border: 1px;
-  border-color: #dddddd;
 }
 
 inputbar {
   padding: 0 30px;
-  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+  children: [textbox-prompt-colon, entry, case-indicator];
 }
 
 prompt {
@@ -59,9 +67,9 @@ prompt {
 
 textbox-prompt-colon {
   expand: false;
-  str: ":";
+  str: ">";
   margin: 0 1ch 0 0;
-  text-color: @base0D;
+  text-color: #ffffff;
 }
 
 entry {
@@ -95,14 +103,14 @@ listview {
 scrollbar {
   background-color: #9f9f9f;
   handle-color: #000000;
-  handle-width: 10px;
+  handle-width: 1px;
   border: 0 1px;
   border-color: #000000;
   margin: 0 0 0 20px;
 }
 
 element {
-  padding: 5px;
+  padding: 10px;
   highlight: bold underline;
 }
 
@@ -111,7 +119,7 @@ element normal {
 }
 
 element selected {
-  background-color: #1076a8;
+  background-color: #000000B0;
 }
 
 element alternate {
